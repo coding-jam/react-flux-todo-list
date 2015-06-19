@@ -1,9 +1,14 @@
 import React from "react";
+import List from "src/components/List";
+import Detail from "src/components/Detail";
 
 export default class App extends React.Component{
 	render() {
 	    return (
-	      <div>Hello World!</div>
+	    	<div>
+	    		<List/>
+	      		<Detail/>
+	    	</div>
 	    );
 	  }
 }
