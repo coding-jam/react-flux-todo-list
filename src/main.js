@@ -1,3 +1,4 @@
 import React from "react";
+import App from "src/components/App"
 
-export default React.render(<div>Hello World!!</div>,document.getElementById('wrapper'));
+export default React.render(<App/>,document.getElementById('wrapper'));
