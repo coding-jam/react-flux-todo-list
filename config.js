@@ -19,6 +19,7 @@ System.config({
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
     "core-js": "npm:core-js@0.9.18",
+    "flux": "npm:flux@2.0.1",
     "react": "npm:react@0.13.3",
     "react-router": "npm:react-router@0.13.3",
     "github:jspm/nodelibs-buffer@0.1.0": {

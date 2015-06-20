@@ -2,6 +2,7 @@
   "jspm": {
     "directories": {},
     "dependencies": {
+      "flux": "npm:flux@2.0.1",
       "react": "npm:react@0.13.3",
       "react-router": "npm:react-router@0.13.3"
     },
