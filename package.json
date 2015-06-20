@@ -2,8 +2,7 @@
   "jspm": {
     "directories": {},
     "dependencies": {
-      "react": "npm:react@^0.14.0-alpha3",
-      "react-router": "npm:react-router@^1.0.0-beta2"
+      "react": "npm:react@0.13.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
