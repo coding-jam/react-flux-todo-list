@@ -1,4 +1,8 @@
 import React from "react";
-import App from "src/components/App"
+import Router from 'react-router';
 
-export default React.render(<App/>,document.getElementById('wrapper'));
+import routes from "src/routes";
+
+Router.run(routes, Router.HashLocation, (Root) => {
+  React.render(<Root/>, document.getElementById('wrapper'));
+});
