@@ -21,9 +21,11 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.12",
+    "events": "npm:events@1.0.2",
     "flux": "npm:flux@2.0.1",
     "react": "npm:react@0.13.3",
     "react-router": "npm:react-router@0.13.3",
+    "underscore": "npm:underscore@1.8.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
