@@ -6,10 +6,10 @@ var Link = Router.Link;
 export default class Menu extends React.Component{
 	render() {
 	    return (
-	       	<ul>
-	       		<li><Link to="list">List</Link></li>
-	       		<li><Link to="detail">Detail</Link></li>
-	       	</ul>
+			<ul className="nav nav-tabs" role="tablist">
+    			<li role="presentation"><Link to="list" role="tab" data-toggle="tab">List</Link></li>
+    			<li role="presentation"><Link to="detail" role="tab" data-toggle="tab">Detail</Link></li>
+   			</ul>
 	    );
-	  }
+	}
 }

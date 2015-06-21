@@ -8,12 +8,14 @@ export default class App extends React.Component{
 	render() {
 	    return (
 	    	<div>
-	    		<h1>ToDo List</h1>
-	    		<Menu/>
-    		    <div className="Content">
-		          <RouteHandler/>
+	    		<h1 className="text-center">ToDo List</h1>
+	    		<div className="container">
+		    		<Menu/>
+	    		    <div className="Content">
+			          <RouteHandler/>
+			        </div>
 		        </div>
 	    	</div>
 	    );
-	  }
+	}
 }
