@@ -35,7 +35,7 @@ export default class List extends React.Component{
 	render() {
 	    return (
 	    	<div>
-		    	<button className="btn btn-info" onClick={onAddClick}>Add</button>
+		    	<a className="btn btn-info" href="#/detail">Add</a>
 		    	<span>{this.state.message}</span>
 				<table>
 					<thead>
