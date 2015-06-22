@@ -4,15 +4,29 @@ import _ from "underscore";
 
 var EventEmitter = Events.EventEmitter;
 
+var data = [];
+
 var TodoStore = _.extend({}, EventEmitter.prototype, {
-	create: function(text) {
-		this.emit("TodoCreated");
+	add: function(text) {
+		data.push(text);
+		this.emit("ListChanged");
+	},
+	update:function(index,text){
+		data[index] = text;
+		this.emit("ListChanged");
+	},
+	delete:function(index){
+		data.splice(index, 1);
+		this.emit("ListChanged");
+	},
+	get:function(){
+		return data;
 	},
 	addChangeListener: function(callback) {
-		this.on("TodoCreated", callback);
+		this.on("ListChanged", callback);
 	},
 	removeChangeListener: function(callback) {
-		this.removeListener("TodoCreated", callback);
+		this.removeListener("ListChanged", callback);
 	}
 });
 
@@ -22,9 +36,15 @@ Dispatcher.register(function(action) {
 
 	switch (action.actionType) {
 		case "addTodo":
-			TodoStore.create(action.text);
+			TodoStore.add(action.text);
 			break;
-	}
+		case "updateTodo":
+			TodoStore.update(action.index,action.text);
+			break;
+		case "deleteTodo":
+			TodoStore.delete(action.index);
+			break;
+	};
 });
 
 export default TodoStore;

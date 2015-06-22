@@ -9,7 +9,8 @@ var {Route,DefaultRoute} = Router;
 export default (
 	<Route handler={App}>
 		<DefaultRoute handler={List}/>
-		<Route name="detail" path="detail" handler={Detail}/>
+		<Route path="detail/:id" handler={Detail}/>
+		<Route path="detail" handler={Detail}/>
 		<Route name="list" path="list" handler={List}/>
 	</Route>
 );
