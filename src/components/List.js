@@ -46,7 +46,7 @@ export default class List extends React.Component{
 			);
 		},this);
 
-		var emptyRow = (<td colSpan="2">Niente da fare</td>);
+		var emptyRow = (<tr><td colSpan="2">Niente da fare</td></tr>);
 
 	    return (
 	    	<div>
