@@ -3,6 +3,7 @@ var connect = require('gulp-connect');
 var rename = require("gulp-rename");
 var del = require('del');
 var shell = require('gulp-shell');
+var karma = require('karma').server;
  
 gulp.task('serve', function() {
   connect.server({
@@ -25,4 +26,12 @@ gulp.task('serve-build',['build'],function(){
   		root:'build',
 		port:8001
   	});
+});
+
+gulp.task('test', function(done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+    }, function() {
+        done();
+    });
 });
