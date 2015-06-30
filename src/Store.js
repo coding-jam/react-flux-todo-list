@@ -19,6 +19,10 @@ var TodoStore = _.extend({}, EventEmitter.prototype, {
 		data.splice(index, 1);
 		this.emit("ListChanged");
 	},
+	deleteAll:function(){
+		data = [];
+		this.emit("ListChanged");
+	},
 	get:function(){
 		return data;
 	},
@@ -43,6 +47,9 @@ Dispatcher.register(function(action) {
 			break;
 		case "deleteTodo":
 			TodoStore.delete(action.index);
+			break;
+		case "deleteAll":
+			TodoStore.deleteAll();
 			break;
 	};
 });

@@ -21,8 +21,16 @@ var deleteTodo = function(index) {
 		index: index
 	});
 };
+
+var deleteAll = function(){
+	Dispatcher.dispatch({
+		actionType: "deleteAll"
+	});
+};
+
 export default {
 	add: add,
 	update: update,
-	delete:deleteTodo
+	delete:deleteTodo,
+	deleteAll:deleteAll
 };
