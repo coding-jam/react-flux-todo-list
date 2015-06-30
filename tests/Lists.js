@@ -14,7 +14,7 @@ describe('List Component', function() {
     var DUMMY_TODOS = ['first Item', 'second Item'];
 
     beforeEach(function() {
-        listComponent = TestUtils.renderIntoDocument( < List > < /List>);
+        listComponent = TestUtils.renderIntoDocument(<List></List>);
         tableElement = TestUtils.findRenderedDOMComponentWithTag(listComponent, "table");
         tbodyElement = TestUtils.findRenderedDOMComponentWithTag(tableElement, "tbody");
     });
