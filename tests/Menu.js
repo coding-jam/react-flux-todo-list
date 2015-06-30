@@ -1,7 +1,11 @@
 import Menu from "src/components/Menu";
+import React from "react";
+import ReactAddons from "react/addons";
 
-describe('Friends Unit Tests', function(){
-    it('should return dummyValue', function() {
+var TestUtils = ReactAddons.addons.TestUtils;
+
+describe('Menu Component', function(){
+    it('should exists', function() {
     	expect(Menu).toBeDefined();
     });
 });
