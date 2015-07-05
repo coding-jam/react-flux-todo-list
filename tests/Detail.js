@@ -34,8 +34,15 @@ describe('Detail Component', function(){
         });
 
         it('clicking the save button should add a todo to the Store list',function(){
+            TestUtils.Simulate.change(inputElement, {target: {value: DUMMY_VALUE}});
             TestUtils.Simulate.click(saveButton);
             expect(Store.get().length).toBe(1);
+        });
+
+        it('After clicking the save button we should move to the list page',function(){
+            TestUtils.Simulate.change(inputElement, {target: {value: DUMMY_VALUE}});
+            TestUtils.Simulate.click(saveButton);
+            expect(window.location.hash).toBe('#/list');
         });
     });
 
