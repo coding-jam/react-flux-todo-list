@@ -30,8 +30,12 @@ gulp.task('serve-build',['build'],function(){
 
 gulp.task('test', function(done) {
     karma.start({
-        configFile: __dirname + '/karma.conf.js',
+        configFile: __dirname + '/karma.conf.js'
     }, function() {
         done();
     });
+});
+
+gulp.task('default', ['test'],function () {
+  return gulp.watch(['*.js','tests/*.js'], ['test']);
 });
