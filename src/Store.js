@@ -6,7 +6,26 @@ var EventEmitter = Events.EventEmitter;
 
 var data = [];
 
-var TodoStore = _.extend({}, EventEmitter.prototype, {
+Dispatcher.register(function(action) {
+	var text;
+
+	switch (action.actionType) {
+		case "addTodo":
+			TodoStore.add(action.text);
+			break;
+		case "updateTodo":
+			TodoStore.update(action.index,action.text);
+			break;
+		case "deleteTodo":
+			TodoStore.delete(action.index);
+			break;
+		case "deleteAll":
+			TodoStore.deleteAll();
+			break;
+	};
+});
+
+var TodoStore = _.extend({
 	add: function(text) {
 		data.push(text);
 		this.emit("ListChanged");
@@ -32,26 +51,6 @@ var TodoStore = _.extend({}, EventEmitter.prototype, {
 	removeChangeListener: function(callback) {
 		this.removeListener("ListChanged", callback);
 	}
-});
-
-// Register callback to handle all updates
-Dispatcher.register(function(action) {
-	var text;
-
-	switch (action.actionType) {
-		case "addTodo":
-			TodoStore.add(action.text);
-			break;
-		case "updateTodo":
-			TodoStore.update(action.index,action.text);
-			break;
-		case "deleteTodo":
-			TodoStore.delete(action.index);
-			break;
-		case "deleteAll":
-			TodoStore.deleteAll();
-			break;
-	};
-});
+},EventEmitter.prototype);
 
 export default TodoStore;
