@@ -1,31 +1,29 @@
-import Dispatcher from "src/Dispatcher";
-
 var add = function(text) {
-	Dispatcher.dispatch({
+	return {
 		actionType: "addTodo",
 		text: text
-	});
+	};
 };
 
 var update = function(index, text) {
-	Dispatcher.dispatch({
+	return {
 		actionType: "updateTodo",
 		text: text,
 		index: index
-	});
+	};
 };
 
 var deleteTodo = function(index) {
-	Dispatcher.dispatch({
+	return {
 		actionType: "deleteTodo",
 		index: index
-	});
+	};
 };
 
 var deleteAll = function(){
-	Dispatcher.dispatch({
+	return {
 		actionType: "deleteAll"
-	});
+	};
 };
 
 export default {

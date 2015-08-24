@@ -1,44 +1,20 @@
 import React from "react";
 import Actions from "src/Actions";
-import Store from "src/Store";
+import { connect } from 'react-redux';
 
-export default class List extends React.Component{
-	constructor(props) {
-	    super(props);
-	    this.state = {
-	      data:Store.get()
-	    };
-
-	    this.listener = this._listener.bind(this);
-	}
-
-	_listener(){
-		this.setState({
-      		data:Store.get()
-	    });
-	}
-
-	componentDidMount() {
-	    Store.addChangeListener(this.listener);
-	}
-
-  	componentWillUnmount() {
-    	Store.removeChangeListener(this.listener);
-  	}
-
-  	delete(index) {
-  		Actions.delete(index);
-	}
-
+class List extends React.Component{
+	
 	render() {
 
-		var items = this.state.data.map(function(todo,i) {
+		var items = this.props.data.map(function(todo,i) {
 			return (
 				<tr key={i}>
 					<td>
 						<a className="btn btn-success" href={'#/detail/' + i}>Edit</a>
-						<button type="button" className="btn btn-danger" onClick={this.delete.bind(this,i)}>
-							Elimina
+						<button type="button" 
+							className="btn btn-danger" 
+							onClick={this.props.dispatch.bind(this,Actions.delete(i))}>
+								Elimina
 						</button>
 					</td>
 					<td>{todo}</td>
@@ -58,11 +34,11 @@ export default class List extends React.Component{
 						</tr>
 					</thead>
 					<tbody>
-						{this.state.data.length ? items : emptyRow}
+						{this.props.data.length ? items : emptyRow}
 					</tbody>
 					<tfoot>
 					    <tr className="text-center">
-					      <td colSpan="2">Total Todos : {this.state.data.length}</td>
+					      <td colSpan="2">Total Todos : {this.props.data.length}</td>
 					    </tr>
   					</tfoot>
 				</table>
@@ -70,3 +46,11 @@ export default class List extends React.Component{
 	    );
 	}
 }
+
+var select = (state) => {
+	return {
+		data:state.todos
+	};
+};
+
+export default connect(select)(List);

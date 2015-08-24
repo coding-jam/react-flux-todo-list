@@ -1,6 +1,5 @@
 import React from "react";
 import Actions from "src/Actions";
-import Store from "src/Store";
 
 export default class Detail extends React.Component{
 
@@ -10,7 +9,7 @@ export default class Detail extends React.Component{
 		this.save = this._save.bind(this);
 		this.handleChange = this._handleChange.bind(this);
 
-		var currentTodo = this.props.params.id ? Store.get()[this.props.params.id] : "";
+		var currentTodo = this.props.params.id ? Store.getState().todos[this.props.params.id] : "";
 		this.state = {
 			currentTodo:currentTodo
 		};
@@ -39,9 +38,9 @@ export default class Detail extends React.Component{
 		var inputComponent = React.findDOMNode(this.refs.text);
 		
 		if(this.props.params.id){
-			Actions.update(this.props.params.id,inputComponent.value);
+			Store.dispatch(Actions.update(this.props.params.id,inputComponent.value));
 		}else{
-			Actions.add(inputComponent.value);
+			Store.dispatch(Actions.add(inputComponent.value));
 		}
 		
 		location.hash = "/list";
