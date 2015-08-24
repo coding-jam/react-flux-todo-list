@@ -1,21 +1,17 @@
 import React from "react";
 import Actions from "src/Actions";
+import { connect } from 'react-redux';
 
-export default class Detail extends React.Component{
+class Detail extends React.Component{
 
 	constructor(props){
 		super(props);
-		
 		this.save = this._save.bind(this);
-		this.handleChange = this._handleChange.bind(this);
-
-		var currentTodo = this.props.params.id ? Store.getState().todos[this.props.params.id] : "";
-		this.state = {
-			currentTodo:currentTodo
-		};
 	}
 
 	render() {
+		var currentTodo = this.props.params.id ? this.props.todos[this.props.params.id] : "";
+	    
 	    return (
 	      	<form>
 	      		<div className="form-group">
@@ -26,8 +22,7 @@ export default class Detail extends React.Component{
 						className="form-control" 
 						id="textField" 
 						placeholder="Write Here" 
-						value={this.state.currentTodo}
-						onChange={this.handleChange}/>
+						defaultValue={currentTodo}/>
 	  			</div>
 	  			<button type="button" className="btn btn-default" onClick={this.save}>Save</button>
   			</form>
@@ -38,16 +33,20 @@ export default class Detail extends React.Component{
 		var inputComponent = React.findDOMNode(this.refs.text);
 		
 		if(this.props.params.id){
-			Store.dispatch(Actions.update(this.props.params.id,inputComponent.value));
+			this.props.dispatch(Actions.update(this.props.params.id,inputComponent.value));
 		}else{
-			Store.dispatch(Actions.add(inputComponent.value));
+			this.props.dispatch(Actions.add(inputComponent.value));
 		}
 		
 		location.hash = "/list";
 	}
 
-	_handleChange(event) {
-    	this.setState({currentTodo: event.target.value});
-  	}
-
 }
+
+var select = (state) => {
+	return {
+		todos:state.todos
+	};
+};
+
+export default connect(select)(Detail);
