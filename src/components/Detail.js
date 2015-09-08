@@ -15,6 +15,22 @@ export default class Detail extends React.Component{
 			currentTodo:currentTodo
 		};
 	}
+	
+	_save() {
+		var inputComponent = React.findDOMNode(this.refs.text);
+		
+		if(this.props.params.id){
+			Actions.update(this.props.params.id,inputComponent.value);
+		}else{
+			Actions.add(inputComponent.value);
+		}
+		
+		location.hash = "/list";
+	}
+
+	_handleChange(event) {
+    	this.setState({currentTodo: event.target.value});
+  	}
 
 	render() {
 	    return (
@@ -35,20 +51,5 @@ export default class Detail extends React.Component{
 	    );
 	}
 
-	_save() {
-		var inputComponent = React.findDOMNode(this.refs.text);
-		
-		if(this.props.params.id){
-			Actions.update(this.props.params.id,inputComponent.value);
-		}else{
-			Actions.add(inputComponent.value);
-		}
-		
-		location.hash = "/list";
-	}
-
-	_handleChange(event) {
-    	this.setState({currentTodo: event.target.value});
-  	}
 
 }
