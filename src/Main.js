@@ -2,9 +2,9 @@ import 'bootstrap/css/bootstrap.css!';
 
 import React from "react";
 import Router from 'react-router';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Routes from "src/Routes";
+import { createStore } from 'redux';
 import Reducers from 'src/Reducers';
 
 let store = createStore(Reducers);
