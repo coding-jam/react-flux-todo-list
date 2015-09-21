@@ -10,6 +10,7 @@
       "react-redux": "npm:react-redux@^0.9.0",
       "react-router": "npm:react-router@0.13.3",
       "redux": "npm:redux@^1.0.1",
+      "redux-logger": "npm:redux-logger@^1.0.8",
       "underscore": "npm:underscore@^1.8.3"
     },
     "devDependencies": {
