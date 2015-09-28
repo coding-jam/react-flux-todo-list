@@ -1,5 +1,5 @@
 const initialState = {
-	todos: ['Wowo']
+	todos: []
 };
 
 function addTodo(state,text){
