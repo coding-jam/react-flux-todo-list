@@ -7,8 +7,6 @@ var EventEmitter = Events.EventEmitter;
 var data = [];
 
 Dispatcher.register(function(action) {
-	var text;
-
 	switch (action.actionType) {
 		case "addTodo":
 			TodoStore.add(action.text);
